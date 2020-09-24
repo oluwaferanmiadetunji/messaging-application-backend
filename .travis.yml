@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+- 12
+script:
+- npm install
+deploy:
+  provider: heroku
+  api_key:
+    secure: fckQPAwe7b0MO30g5uEmk4IY8F92GuVR9x7hHjjWZlRZrDm/i9zOOaO88e3vKfYXQ4tkWnL8CswCE0QHTrlTaKhVwkCtny2vnJRtooWTboMuCAULpxrVNPxl5vdIyD66LMvfNLA+cd8TZKDc0/yxVoaCQYPLsUuuvRWZn3OlWZeelobmBBBYnmEe87Eu8029HfA/YByIuu6932uqHY+twgWmqn8G1vlbdgxTz7vZW79XrwCR8o+Hnv+S+9zs3iO5rkhOxoKvH84xukwDVe62FIbVM8Xl1WMdS68bloM+b7VavUHn2At6cKViXhNOcCoQsFKsQOjrrnPOU9sA0rMX+Iccq7VT4QocUCalGBsN2uFdgp5h3MTT+aS2Lnp8BnGjPOc377705xQKFL2ZszO8mEb6Gb6/o2mmZxlazKawcsCyNV3EHePQtRPsMfAAGgkPSMd8aZJ0PmsQHo3daPTsihnPpK6lIe9aPd0wndsKXvDsjo0Y6REMOu/sU2E6AqC5fdsx6P40iLtJZg7OpHKHqL0aaCgxnkB2hTpndc4mp5w9H0dOW4r6VF1FwiPA+28gzZbpEw53so8kLK/UG07vAw2p+/AxgsRVCG2/aXRzssDCgxXzvnhetVkp3RnviFqLvtNNAOCk/gUz+WSE0YVS4KosMj1rAzo5JAn+7zPLhqI=
+  app: mensaje-app
+  on:
+    repo: oluwaferanmiadetunji/messaging-application-backend
+    branch: master
+  skip_cleanup: 'true'

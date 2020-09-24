@@ -2,7 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 const helmet = require('helmet');
-const authRoutes = require('../routes/auth');
+// const authRoutes = require('../routes/auth');
+const home = require('../routes/home');
 
 const app = express();
 app.use(cors());
@@ -23,6 +24,7 @@ let morganFunction = function (tokens, req, res) {
 };
 app.use(morgan(morganFunction));
 
-app.use('/', authRoutes);
+// app.use('/', authRoutes);
+app.use("/", home)
 
 module.exports = app;
