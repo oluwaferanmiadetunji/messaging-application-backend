@@ -1,7 +1,7 @@
 const admin = require('firebase-admin');
 const firebase = require('firebase');
 const SA = require('./ServiceAccount.json');
-const {apiKey, appId, authDomain, databaseURL, measurementId, messagingSenderId, projectId} = require('./config');
+const {apiKey, appId, authDomain, databaseURL, measurementId, messagingSenderId, storageBucket, projectId} = require('./config');
 
 const firebaseConfig = {
 	apiKey,
@@ -24,4 +24,6 @@ firebase.initializeApp(firebaseConfig);
 
 const storage = admin.storage().bucket();
 
-module.exports = {admin, firebase, storage, firebaseConfig};
+const db = admin.firestore();
+
+module.exports = {admin, firebase, storage, db, firebaseConfig};
