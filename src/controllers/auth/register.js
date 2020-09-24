@@ -1,4 +1,4 @@
-const {firebase, db} = require('../../config/firebase');
+const {firebase, db, firebaseConfig} = require('../../config/firebase');
 const {validateRegisterData} = require('../../helpers/validators');
 
 module.exports = (req, res) => {
@@ -8,6 +8,8 @@ module.exports = (req, res) => {
 		email: req.body.email,
 		password: req.body.password,
 	};
+
+	const noImg = 'user.jpg';
 
 	const {valid, errors} = validateRegisterData(user);
 	if (!valid) return res.status(400).json({status: 'error', message: 'Account could not be created!', data: errors});
@@ -28,6 +30,7 @@ module.exports = (req, res) => {
 				email: user.email,
 				createdAt: new Date().toISOString(),
 				userId: data.user.uid,
+				imageUrl: `https://firebasestorage.googleapis.com/v0/b/${firebaseConfig.storageBucket}/o/${noImg}?alt=media`,
 			});
 		})
 		.then(() => {
