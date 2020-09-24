@@ -1,0 +1,25 @@
+{
+  "name": "messaging-application-backend",
+  "version": "1.0.0",
+  "description": "A simple real time messaging application using sockets",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "dev": "nodemon src/config/server.js",
+		"start": "node src/config/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oluwaferanmiadetunji/messaging-application-backend.git"
+  },
+  "author": "Adetunji Oluwaferanmi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oluwaferanmiadetunji/messaging-application-backend/issues"
+  },
+  "homepage": "https://github.com/oluwaferanmiadetunji/messaging-application-backend#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
+}
