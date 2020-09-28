@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 
 const authRoutes = require('../routes/auth');
 const home = require('../routes/home');
+const user = require('../routes/user');
 
 const app = express();
 app.use(cors());
@@ -29,5 +30,6 @@ app.use(morgan(morganFunction));
 
 app.use('/', authRoutes);
 app.use('/', home);
+app.use('/', user);
 
 module.exports = app;
