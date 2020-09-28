@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 const helmet = require('helmet');
+const cookieParser = require('cookie-parser');
+
 const authRoutes = require('../routes/auth');
 const home = require('../routes/home');
 
@@ -10,6 +12,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(helmet());
+app.use(cookieParser());
 
 let morganFunction = function (tokens, req, res) {
 	return [
@@ -25,6 +28,6 @@ let morganFunction = function (tokens, req, res) {
 app.use(morgan(morganFunction));
 
 app.use('/', authRoutes);
-app.use("/", home)
+app.use('/', home);
 
 module.exports = app;
