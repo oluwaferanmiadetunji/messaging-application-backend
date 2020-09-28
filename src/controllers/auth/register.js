@@ -1,4 +1,4 @@
-const { firebaseConfig} = require('../../config/firebase');
+const {firebaseConfig} = require('../../config/firebase');
 const {validateRegisterData} = require('../../helpers/validators');
 const getUserData = require('../../queries/getUserData');
 const createUser = require('../../queries/createUser');
@@ -33,6 +33,7 @@ module.exports = async (req, res) => {
 		createdAt: new Date().toISOString(),
 		userId,
 		imageUrl: `https://firebasestorage.googleapis.com/v0/b/${firebaseConfig.storageBucket}/o/${noImg}?alt=media`,
+		online: false,
 	});
 
 	return res.status(201).json({status: 'ok', message: 'Account created successfull', data: ''});
