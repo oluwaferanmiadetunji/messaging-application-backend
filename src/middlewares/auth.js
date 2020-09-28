@@ -5,7 +5,6 @@ module.exports = (req, res, next) => {
 	if (req.headers.authorization && req.headers.authorization.startsWith('Bearer ')) {
 		idToken = req.headers.authorization.split('Bearer ')[1];
 	} else {
-		console.error('No token found');
 		return res.status(403).json({
 			status: 'error',
 			message: 'Unauthorized request! Please try again',
@@ -18,18 +17,14 @@ module.exports = (req, res, next) => {
 		.then(async (decodedToken) => {
 			req.user = decodedToken;
 			try {
-        const data = await db
-          .collection('users')
-          .where('userId', '==', req.user.uid)
-          .limit(1)
-          .get();
-        req.user.username = data.docs[0].data().username;
-        req.user.imageUrl = data.docs[0].data().imageUrl;
-        req.user.email = data.docs[0].data().email;
-        req.user.name = data.docs[0].data().name;
-        return next();
-      } catch (err) {
-        return res.status(403).json({ status: 'error', message: 'Error verifying token! Please try again', data: '' });
-      }
+				const data = await db.collection('users').where('userId', '==', req.user.uid).limit(1).get();
+				req.user.username = data.docs[0].data().username;
+				req.user.imageUrl = data.docs[0].data().imageUrl;
+				req.user.email = data.docs[0].data().email;
+				req.user.name = data.docs[0].data().name;
+				return next();
+			} catch (err) {
+				return res.status(403).json({status: 'error', message: 'Error verifying token! Please try again', data: ''});
+			}
 		});
 };

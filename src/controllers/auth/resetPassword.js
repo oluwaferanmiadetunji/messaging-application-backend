@@ -10,7 +10,6 @@ module.exports = (req, res) => {
 				.json({status: 'ok', message: 'A link to reset your password has been sent to your email', data: ''});
 		})
 		.catch((e) => {
-			console.log(e);
 			return res.status(500).json({status: 'error', message: 'Could not find email address', data: ''});
 		});
 };
