@@ -24,6 +24,7 @@ module.exports = (req, res, next) => {
 				req.user.name = data.docs[0].data().name;
 				return next();
 			} catch (err) {
+				console.log(err);
 				return res.status(403).json({status: 'error', message: 'Error verifying token! Please try again', data: ''});
 			}
 		});
