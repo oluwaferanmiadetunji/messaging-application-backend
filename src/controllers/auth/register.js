@@ -36,6 +36,7 @@ module.exports = async (req, res) => {
 			userId,
 			imageUrl: `https://firebasestorage.googleapis.com/v0/b/${firebaseConfig.storageBucket}/o/${noImg}?alt=media`,
 			online: false,
+			lastLogin: new Date().toISOString(),
 		});
 
 		// get user token

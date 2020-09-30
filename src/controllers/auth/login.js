@@ -1,6 +1,7 @@
 const {validateLoginData} = require('../../helpers/validators');
 const getUserData = require('../../queries/getUserData');
 const getUserToken = require('../../queries/getUserToken');
+const updateLastLogin = require('../../queries/updateLastLogin');
 
 module.exports = async (req, res) => {
 	const user = {
@@ -9,7 +10,7 @@ module.exports = async (req, res) => {
 	};
 
 	// validate login data
-	const {valid, errors} =  validateLoginData(user);
+	const {valid, errors} = validateLoginData(user);
 
 	// if data is invalid, send appropriate response
 	if (!valid) return res.status(400).json(errors);
@@ -25,6 +26,8 @@ module.exports = async (req, res) => {
 
 		// get user data
 		const userData = await getUserData('email', user.email);
+
+		await updateLastLogin(userData.username);
 
 		return res.status(200).json({status: 'ok', message: 'User logged in successfully', data: {token, userData}});
 	} catch (err) {
