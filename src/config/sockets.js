@@ -2,6 +2,7 @@ const socketio = require('socket.io');
 const setOnlineStatus = require('../controllers/user/setOnlineStatus');
 const getChats = require('../controllers/chats/getChats');
 const saveChat = require('../controllers/chats/saveChat');
+const getAllUsers = require('../controllers/user/getAllUsers');
 
 module.exports.listen = (app) => {
 	const io = socketio(app);
@@ -10,6 +11,8 @@ module.exports.listen = (app) => {
 		// set user online status to true
 		socket.on('online', async ({username}) => {
 			await setOnlineStatus(username, true);
+			const users = await getAllUsers(username);
+			socket.emit('allUsers', users);
 		});
 
 		// set user online status to false
