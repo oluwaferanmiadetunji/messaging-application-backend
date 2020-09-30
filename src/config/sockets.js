@@ -5,10 +5,11 @@ module.exports.listen = (app) => {
 	const io = socketio(app);
 
 	io.on('connection', (socket) => {
-		console.log('We have a new connection!!!');
+		console.log('New Client connected!!!');
 
 		socket.on('online', ({username}) => {
 			setOnlineStatus(username, true);
+			socket.broadcast.emit('newUser', {username});
 		});
 
 		socket.on('offline', ({username}) => {
