@@ -28,11 +28,11 @@ module.exports.listen = (app) => {
 		});
 
 		// get chats with recipeint
-		socket.on('getChats', async (chat) => {
-			await getChats(chat);
-
+		socket.on('getChats', async (chat, callback) => {
+			const chats = await getChats(chat);
 			// join chat
 			socket.join(chat);
+			callback({chats});
 		});
 
 		// send message to recipient

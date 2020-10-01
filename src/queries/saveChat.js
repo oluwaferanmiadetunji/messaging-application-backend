@@ -1,8 +1,9 @@
 const {db} = require('../config/firebase');
 
-module.exports = async (chat, data) => {
+module.exports = async (first, second, data) => {
 	try {
-		await db.doc(`/chats/${chat}`).set(data);
+		const chat = db.collection('chats');
+		await chat.doc(first).collection(second).doc().set(data);
 	} catch (err) {
 		console.log(err);
 	}
