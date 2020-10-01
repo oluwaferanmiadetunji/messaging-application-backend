@@ -1,8 +1,9 @@
 const {db} = require('../config/firebase');
 
-module.exports = async (chat) => {
+module.exports = async (first, second) => {
 	try {
-		await db.doc(`/chats/${chat}`).set({
+		const chat = db.collection('chats');
+		await chat.doc(first).collection(second).doc().set({
 			createdAt: new Date().toISOString(),
 			sender: 'admin',
 			message: 'This is the beginning of your conversation',

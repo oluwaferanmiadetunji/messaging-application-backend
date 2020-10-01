@@ -14,26 +14,25 @@ module.exports.listen = (app) => {
 			await setOnlineStatus(username, true);
 			const users = await getAllUsers(username);
 			const data = await getProfile(username);
-			socket.emit('allUsers', users);
-			setInterval(() => {
-				socket.emit('allUsers', users);
-			}, 10000);
+			// update all users
+			io.emit('allUsers', users);
 			socket.emit('profile', data);
 		});
 
 		// set user online status to false
 		socket.on('offline', async ({username}) => {
 			await setOnlineStatus(username, false);
+			const users = await getAllUsers(username);
+			// update all users
+			io.emit('allUsers', users);
 		});
 
 		// get chats with recipeint
-		socket.on('getChats', async ({chat}, callback) => {
+		socket.on('getChats', async (chat) => {
 			await getChats(chat);
 
 			// join chat
 			socket.join(chat);
-
-			callback();
 		});
 
 		// send message to recipient
