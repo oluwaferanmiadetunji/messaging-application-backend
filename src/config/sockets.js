@@ -3,6 +3,7 @@ const setOnlineStatus = require('../controllers/user/setOnlineStatus');
 const getChats = require('../controllers/chats/getChats');
 const saveChat = require('../controllers/chats/saveChat');
 const getAllUsers = require('../controllers/user/getAllUsers');
+const getProfile = require('../controllers/user/profile');
 
 module.exports.listen = (app) => {
 	const io = socketio(app);
@@ -12,7 +13,12 @@ module.exports.listen = (app) => {
 		socket.on('online', async ({username}) => {
 			await setOnlineStatus(username, true);
 			const users = await getAllUsers(username);
+			const data = await getProfile(username);
 			socket.emit('allUsers', users);
+			setInterval(() => {
+				socket.emit('allUsers', users);
+			}, 10000);
+			socket.emit('profile', data);
 		});
 
 		// set user online status to false
