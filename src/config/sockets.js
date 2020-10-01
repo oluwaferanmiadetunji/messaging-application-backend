@@ -36,10 +36,9 @@ module.exports.listen = (app) => {
 		});
 
 		// send message to recipient
-		socket.on('sendMessage', async ({data, chat}, callback) => {
+		socket.on('sendMessage', async ({data, chat}) => {
 			io.to(chat).emit('message', {sender: data.username, text: data.message, createdAt: data.createdAt});
 			await saveChat(chat, data);
-			callback();
 		});
 
 		// disconnect socket
