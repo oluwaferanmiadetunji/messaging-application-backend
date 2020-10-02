@@ -16,6 +16,7 @@
     -   [Installation](#installation)
     -   [Starting](#starting)
     -   [Tests](#tests)
+    -   [Documentation](#documentation)
 -   [Contributing](#contributing)
 -   [License](#license)
 -   [Contact](#contact)
@@ -70,6 +71,11 @@ To run unit tests you can run:
 npm test
 ```
 
+### Documentation
+
+The link to the API documentaion
+
+https://documenter.getpostman.com/view/12669042/TVRedWAe
 <!-- CONTRIBUTING -->
 
 ## Contributing
