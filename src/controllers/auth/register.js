@@ -54,7 +54,6 @@ module.exports = async (req, res) => {
 			.status(200)
 			.json({status: 'ok', message: 'Account created successfully', data: {token: userToken.token, userData}});
 	} catch (err) {
-		console.log(err);
 		return res.status(500).json({status: 'error', message: 'Something went wrong! Please try again', data: ''});
 	}
 };
