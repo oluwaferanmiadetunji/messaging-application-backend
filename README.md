@@ -30,7 +30,6 @@ messenger is a real time messaging web app. Users are able to share real time da
 ### Built With
 
 -   [React](https://reactjs.org/)
--   [React Bootstrap](https://react-bootstrap.netlify.app/getting-started/introduction/)
 -   [Node.js](https://nodejs.org/en/)
 -   [Firebase](https://firebase.google.com/)
 -   [socket.io](https://socket.io/)
@@ -76,6 +75,7 @@ npm test
 The link to the API documentaion
 
 https://documenter.getpostman.com/view/12669042/TVRedWAe
+
 <!-- CONTRIBUTING -->
 
 ## Contributing
@@ -97,6 +97,7 @@ Contributions are what make the open source community such an amazing place to b
 Distributed under the MIT License. See `LICENSE` for more information.
 
 <!-- CONTACT -->
+
 ## Contact
 
 Adetunji Oluwaferanmi - oluwaferanmiadetunji@gmail.com
